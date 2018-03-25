@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <title>Pet-info</title>
+
+    <script>
+        jQuery(function ($) {
+            function fix_size() {
+                var images = $('.pet-avatar img');
+                images.each(setsize);
+
+                function setsize() {
+                    var img = $(this),
+                        img_dom = img.get(0),
+                        container = img.parents('.pet-avatar');
+                    if (img_dom.complete) {
+                        resize();
+                    } else img.one('load', resize);
+
+                    function resize() {
+                        if ((container.width() / container.height()) < (img_dom.width / img_dom.height)) {
+                            img.width('100%');
+                            img.height('auto');
+                            return;
+                        }
+                        img.height('100%');
+                        img.width('auto');
+                    }
+                }
+            }
+
+            $(window).on('resize', fix_size);
+            fix_size();
+        });
+    </script>
+</head>
+<body>
+<div th:replace="header :: header"></div>
+<div class="container">
+    <div class="col-md-12 wrapper">
+        <div class="col-md-6 pet-radius pet-info">
+            <div class="pet-avatar">
+                <img th:src="@{'../image/' + ${pet.image.id}}">
+            </div>
+        </div>
+        <div class="col-md-6 pet-radius pet-info pet-info-background">
+            <p id="name" th:text="'Name: ' + ${pet.name}"></p>
+            <p id="type" th:text="'Type: ' + ${pet.petType.type}"></p>
+            <p id="breed" th:text="'Breed: ' + ${pet.breed.name}"></p>
+            <p id="age" th:text="'Age: ' + ${pet.age}"></p>
+            <p id="weight" th:text="'Weight: ' + ${pet.weight} + ' kg'"></p>
+        </div>
+    </div>
+    <div class="col-md-12 wrapper">
+        <div class="col-md-12 pet-procedures" style="height: 500px; border: 2px solid black; border-radius: 7px;">
+
+        </div>
+    </div>
+</div>
+<div th:replace="footer :: footer"></div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <title>New Pet</title>
+
+    <script>
+        $(loadPetType);
+
+        function loadPetType() {
+            $("#pet_type").empty();
+            $.ajax({
+                url: './pet-type',
+                dataType: "json",
+                success: function (data) {
+                    $.each(data, function (i, val) {
+                        document.getElementById("petType").innerHTML +=
+                            "<option value='" + val.type + "'>" + val.type + "</option>";
+                    });
+                    loadPetBreed();
+                }
+            });
+        }
+
+        function loadPetBreed() {
+            var type = document.getElementById("petType").value;
+            $("#breed").empty();
+            $.ajax({
+                url: './breed-by-type',
+                data: {type : type},
+                dataType: "json",
+                success : function (data) {
+                    $.each(data, function (i, val) {
+                        document.getElementById("breed").innerHTML +=
+                            "<option value='" + val.name + "'>" + val.name + "</option>";
+                    })
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<div th:replace="header :: header"></div>
+<div class="container">
+    <div class="col col-md-4">
+        <h2>Add Pet</h2>
+        <form name="create-pet" th:action="@{/create-pet}" method="post" enctype="multipart/form-data">
+            <label for="name">Name:</label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Pet name"
+                       autofocus required="required">
+            </div>
+            <label for="age">Age:</label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-heart"></i></span>
+                <input type="number" class="form-control" id="age" name="age"
+                       placeholder="Age pet" required="required">
+            </div>
+            <label for="weight">Weight kg:</label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-scale"></i></span>
+                <input type="number" step="0.1" class="form-control" id="weight" name="weight"
+                       placeholder="Weight pet" required="required">
+            </div>
+            <label for="petType">Pet type:</label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-piggy-bank"></i></span>
+                <select class="form-control" id="petType" name="petType" onchange="loadPetBreed();"></select>
+            </div>
+            <label for="breed">Breed:</label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
+                <select class="form-control" id="breed" name="breed"></select>
+            </div>
+            <label for="upFile">Select a photo of a pet:</label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
+                <input type="file" name="upFile" id="upFile" required="required"><br/>
+            </div>
+            <button type="submit" class="btn btn-success" style="margin-top: 15px">Sign On</button>
+        </form>
+    </div>
+</div>
+<div th:replace="footer :: footer"></div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <title>User Page</title>
+
+    <script>
+        jQuery(function ($) {
+            function fix_size() {
+                var images = $('.pet-icon img');
+                images.each(setsize);
+
+                function setsize() {
+                    var img = $(this),
+                        img_dom = img.get(0),
+                        container = img.parents('.pet-icon');
+                    if (img_dom.complete) {
+                        resize();
+                    } else img.one('load', resize);
+
+                    function resize() {
+                        if ((container.width() / container.height()) < (img_dom.width / img_dom.height)) {
+                            img.width('100%');
+                            img.height('auto');
+                            return;
+                        }
+                        img.height('100%');
+                        img.width('auto');
+                    }
+                }
+            }
+
+            $(window).on('resize', fix_size);
+            fix_size();
+        });
+    </script>
+
+</head>
+<body>
+<div th:replace="header :: header"></div>
+<div class="container">
+    <div class="col-md-12 wrapper" style="margin-top: 20px">
+        <div class="col-md-4">
+            <div class="user user-radius user-primary">
+                <a href="#" style="text-decoration: none; color:black">
+                    <div class="user-content">
+                        <div class="user-avatar">
+                            <img th:src="@{/img/avatar.png}" src="../static/img/avatar.png"/>
+                        </div>
+                        <div class="user-info">
+                            <p th:text="'Name: ' + ${user.firstName}"></p>
+                            <p th:text="'Surname: ' + ${user.lastName}"></p>
+                            <p th:text="'Email:'"></p>
+                            <p th:text="${user.email}"></p>
+                            <p th:text="'Phone: ' + ${user.phoneNumber}"></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="col-md-4" th:each="pet : ${user.petSet}">
+                <div class="pet user-radius user-primary">
+                    <a th:href="@{'./pet-info/' + ${pet.id}}">
+                        <div class="user-content-pet">
+                            <div class="pet-icon">
+                                <img th:src="@{'./image/' + ${pet.image.id}}"/>
+                            </div>
+                            <h3 th:text="${pet.name}"></h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!--Block add new pet-->
+            <div class="col-md-4">
+                <div class="pet user-radius user-primary" style="opacity: 0.5">
+                    <a th:href="@{/add-pet}" style="text-decoration: none; color:black">
+                        <div class="user-content-pet">
+                            <div>
+                                <img th:src="@{/img/pluslogo.png}" src="/static/img/pluslogo.png" alt="logo"
+                                     style="display: block;  width: 100%; padding: 50px"/>
+                            </div>
+                            <h3>Add</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="footer :: footer"></div>
+</body>
+</html>

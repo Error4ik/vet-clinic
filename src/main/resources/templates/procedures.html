@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <title>Services page</title>
+</head>
+<body>
+<div th:replace="header :: header"></div>
+<div class="container wrapper" style="border: 2px solid black; border-radius: 7px;">
+    <div class="col-md-12">
+        <div th:each="procedure : ${procedures}">
+            <div class="col-md-4">
+                <div class="pet user-radius user-primary">
+                    <!-- Trigger the modal with a button -->
+                    <a data-toggle="modal" th:attr="data-target='#' + ${procedure.id}">
+                        <div class="user-content-pet">
+                            <div style="margin-bottom: 10px">
+                                <img th:src="@{/img/image.png}"/>
+                            </div>
+                            <h3 th:text="${procedure.name}"></h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div th:id="${procedure.id}" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title" th:text="${procedure.name}"></h4>
+                        </div>
+                        <div class="modal-body">
+                            <p th:text="${procedure.description}"></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="footer :: footer"></div>
+</body>
+</html>
