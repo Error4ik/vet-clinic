@@ -14,7 +14,7 @@ CREATE TABLE users (
   phone_number VARCHAR(30)         NOT NULL
 );
 
-CREATE TABLE user_role (
+CREATE TABLE user_roles (
   id      SERIAL PRIMARY KEY,
   user_id INTEGER NOT NULL,
   role_id INTEGER NOT NULL,

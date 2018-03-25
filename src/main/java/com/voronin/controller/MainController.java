@@ -21,7 +21,7 @@ import java.util.List;
  * @since 16.02.2018.
  */
 @Controller
-public class TestController {
+public class MainController {
 
     @Autowired
     private BreedService breedService;
