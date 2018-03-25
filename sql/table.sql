@@ -1,18 +1,5 @@
 CREATE DATABASE clinic;
 
-CREATE TABLE breeds (
-  id          SERIAL PRIMARY KEY,
-  name        VARCHAR(255) UNIQUE NOT NULL,
-  pet_type_id INTEGER             NOT NULL,
-  FOREIGN KEY (pet_type_id) REFERENCES pet_type (id)
-);
-
-CREATE TABLE images (
-  id        SERIAL PRIMARY KEY,
-  name      VARCHAR(255) NOT NULL,
-  image_url VARCHAR(255) NOT NULL
-);
-
 CREATE TABLE roles (
   id   SERIAL PRIMARY KEY,
   role VARCHAR(255) UNIQUE NOT NULL
@@ -38,9 +25,22 @@ CREATE TABLE user_role (
   UNIQUE (user_id, role_id)
 );
 
+CREATE TABLE images (
+  id        SERIAL PRIMARY KEY,
+  name      VARCHAR(255) NOT NULL,
+  image_url VARCHAR(255) NOT NULL
+);
+
 CREATE TABLE pet_type (
   id   SERIAL PRIMARY KEY,
   type VARCHAR(100) UNIQUE NOT NULL
+);
+
+CREATE TABLE breeds (
+  id          SERIAL PRIMARY KEY,
+  name        VARCHAR(255) UNIQUE NOT NULL,
+  pet_type_id INTEGER             NOT NULL,
+  FOREIGN KEY (pet_type_id) REFERENCES pet_type (id)
 );
 
 CREATE TABLE pets (
