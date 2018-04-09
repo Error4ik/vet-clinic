@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * TODO: comment.
+ * User service.
  *
  * @author Alexey Voronin.
  * @since 11.02.2018.

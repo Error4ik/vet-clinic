@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 /**
- * TODO: comment.
+ * Blog.
  *
  * @author Alexey Voronin.
  * @since 02.04.2018.

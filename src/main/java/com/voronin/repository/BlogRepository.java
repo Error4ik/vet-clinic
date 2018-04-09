@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * TODO: comment.
+ * Blog repository.
  *
  * @author Alexey Voronin.
  * @since 03.04.2018.

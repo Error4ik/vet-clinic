@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * TODO: comment.
+ * Procedure.
  *
  * @author Alexey Voronin.
  * @since 07.03.2018.

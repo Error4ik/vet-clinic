@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * TODO: comment.
+ * Admin controller.
  *
  * @author Alexey Voronin.
  * @since 06.04.2018.

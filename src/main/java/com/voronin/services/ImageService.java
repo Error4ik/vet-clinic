@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * TODO: comment.
+ * Image service.
  *
  * @author Alexey Voronin.
  * @since 11.02.2018.

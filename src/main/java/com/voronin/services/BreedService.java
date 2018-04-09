@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * TODO: comment.
+ * Breed service.
  *
  * @author Alexey Voronin.
  * @since 11.02.2018.

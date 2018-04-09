@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * TODO: comment.
+ * Pet procedure repository.
  *
  * @author Alexey Voronin.
  * @since 08.04.2018.

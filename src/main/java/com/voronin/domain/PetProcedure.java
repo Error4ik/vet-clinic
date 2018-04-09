@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 /**
- * TODO: comment.
+ * Pet procedure.
  *
  * @author Alexey Voronin.
  * @since 08.04.2018.

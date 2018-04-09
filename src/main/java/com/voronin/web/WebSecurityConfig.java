@@ -10,7 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
- * TODO: comment.
+ * Web security config.
  *
  * @author Alexey Voronin.
  * @since 07.02.2018.

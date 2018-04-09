@@ -5,7 +5,7 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
- * TODO: comment.
+ * Mvc config.
  *
  * @author Alexey Voronin.
  * @since 07.02.2018.

@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 /**
- * TODO: comment.
+ * Security service.
  *
  * @author Alexey Voronin.
  * @since 16.02.2018.

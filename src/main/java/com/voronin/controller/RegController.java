@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * TODO: comment.
+ * Reg controller.
  *
  * @author Alexey Voronin.
  * @since 20.02.2018.

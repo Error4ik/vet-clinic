@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 /**
- * TODO: comment.
+ * Pet service.
  *
  * @author Alexey Voronin.
  * @since 11.02.2018.

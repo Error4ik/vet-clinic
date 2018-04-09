@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * TODO: comment.
+ * Blog controller.
  *
  * @author Alexey Voronin.
  * @since 02.04.2018.

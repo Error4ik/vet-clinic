@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 /**
- * TODO: comment.
+ * Blog service.
  *
  * @author Alexey Voronin.
  * @since 03.04.2018.

@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * TODO: comment.
+ * Role repository.
  *
  * @author Alexey Voronin.
  * @since 11.02.2018.

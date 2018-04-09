@@ -1,7 +1,7 @@
 package com.voronin.domain;
 
 /**
- * TODO: comment.
+ * Fill pet created.
  *
  * @author Alexey Voronin.
  * @since 02.03.2018.

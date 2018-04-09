@@ -15,7 +15,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * TODO: comment.
+ * Detail service.
  *
  * @author Alexey Voronin.
  * @since 16.02.2018.

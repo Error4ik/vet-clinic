@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * TODO: comment.
+ * Breed repository.
  *
  * @author Alexey Voronin.
  * @since 11.02.2018.

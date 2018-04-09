@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * TODO: comment.
+ * Pet procedure service.
  *
  * @author Alexey Voronin.
  * @since 08.04.2018.

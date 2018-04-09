@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 /**
- * TODO: comment.
+ * Pet Controller.
  *
  * @author Alexey Voronin.
  * @since 28.02.2018.
