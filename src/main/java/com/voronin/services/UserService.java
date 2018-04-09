@@ -36,15 +36,15 @@ public class UserService {
         return this.userRepository.save(owner);
     }
 
-    public User getById(final long id) {
+    public User getById(final int id) {
         return this.userRepository.findOne(id);
     }
 
-    public List<User> getOwners() {
+    public List<User> getUsers() {
         return (List<User>) this.userRepository.findAll();
     }
 
-    public void removeOwnerById(final long id) {
+    public void removeOwnerById(final int id) {
         this.userRepository.delete(id);
     }
 
@@ -60,5 +60,13 @@ public class UserService {
         user.setRoles(roles);
         this.save(user);
         this.securityService.autoLogin(user.getEmail(), password);
+    }
+
+    public void update(final User user) {
+        User us = this.getById(user.getId());
+        us.setFirstName(user.getFirstName());
+        us.setLastName(user.getLastName());
+        us.setPhoneNumber(user.getPhoneNumber());
+        this.userRepository.save(us);
     }
 }

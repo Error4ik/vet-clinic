@@ -7,8 +7,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <script type="text/javascript" th:src="@{/js/myScript.js}"></script>
     <title>Pet-info</title>
-
     <script>
         jQuery(function ($) {
             function fix_size() {
@@ -39,6 +39,10 @@
             fix_size();
         });
     </script>
+
+    <script>
+        $(currentUser);
+    </script>
 </head>
 <body>
 <div th:replace="header :: header"></div>
@@ -57,9 +61,19 @@
             <p id="weight" th:text="'Weight: ' + ${pet.weight} + ' kg'"></p>
         </div>
     </div>
-    <div class="col-md-12 wrapper">
-        <div class="col-md-12 pet-procedures" style="height: 500px; border: 2px solid black; border-radius: 7px;">
-
+    <div class="col-md-12 row-centered pet-info-background">
+        <h2 th:text="${'Полученные услуги и их стоимость'}"></h2>
+        <div th:each="procedure : ${pet.procedures}">
+            <div class="col-md-6">
+                <div class="procedure">
+                    <p th:text="${procedure.name}"></p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="procedure">
+                    <p th:text="${procedure.price} + 'р'"></p>
+                </div>
+            </div>
         </div>
     </div>
 </div>

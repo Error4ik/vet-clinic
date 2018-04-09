@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <script type="text/javascript" th:src="@{/js/myScript.js}"></script>
+    <title>Admin Page</title>
+
+    <script>
+        jQuery(function ($) {
+            function fix_size() {
+                var images = $('.pet-icon img');
+                images.each(setsize);
+
+                function setsize() {
+                    var img = $(this),
+                        img_dom = img.get(0),
+                        container = img.parents('.pet-icon');
+                    if (img_dom.complete) {
+                        resize();
+                    } else img.one('load', resize);
+
+                    function resize() {
+                        if ((container.width() / container.height()) < (img_dom.width / img_dom.height)) {
+                            img.width('100%');
+                            img.height('auto');
+                            return;
+                        }
+                        img.height('100%');
+                        img.width('auto');
+                    }
+                }
+            }
+
+            $(window).on('resize', fix_size);
+            fix_size();
+        });
+    </script>
+    <script>
+        $(currentUser);
+    </script>
+</head>
+<body>
+<div th:replace="header :: header"></div>
+
+<div class="container">
+    <div class="col-md-12" style="margin-top: 10px">
+        <table style="width: 100%; table-layout: fixed" class="table table-bordered">
+            <thead>
+            <tr class="row-centered">
+                <th th:text="Пользователи" style="text-align: center"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}" class="row-centered">
+                <td th:if="${user.firstName != 'admin'}">
+                    <div class="panel-group" style="margin-bottom: 0">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" th:href="'#collapse' + ${user.id}"
+                                       th:text="${user.firstName} + ' ' + ${user.lastName}"></a>
+                                </h4>
+                            </div>
+                            <div th:id="'collapse' + ${user.id}" class="panel-collapse collapse">
+                                <div>
+                                    <table style="width: 100%; table-layout: fixed" class="table table-bordered">
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="col-md-12">
+                                                    <div class="col-md-3" th:each="pet : ${user.petSet}">
+                                                        <div class="pet user-radius user-primary">
+                                                            <a data-toggle="modal"
+                                                               th:attr="data-target='#pet' + ${pet.id}"
+                                                               style="text-decoration: none; color:black">
+                                                                <div class="user-content-pet">
+                                                                    <div class="pet-icon">
+                                                                        <img th:src="@{'./image/' + ${pet.image.id}}"/>
+                                                                    </div>
+                                                                    <h3 th:text="${pet.name}"></h3>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+
+                                                        <div th:id="'pet' + ${pet.id}" class="modal fade" role="dialog">
+                                                            <div class="modal-dialog">
+                                                                <!-- Modal content-->
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close"
+                                                                                data-dismiss="modal">&times;
+                                                                        </button>
+                                                                        <h4 class="modal-title"
+                                                                            th:text="${'Добавить Процедуру'}"></h4>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form id="addPetProcedure" class="form">
+                                                                            <div class="row"
+                                                                                 style="text-align: center; padding: 3px">
+                                                                                <div class="col-md-12">
+                                                                                    <label th:for="'phone' + ${pet.id}"
+                                                                                           th:text="${'Процедуры'}"></label>
+                                                                                    <div class="input-group">
+                                        <span class="input-group-addon"><i
+                                                class="glyphicon glyphicon-glass"></i></span>
+                                                                                        <select class="form-control"
+                                                                                                th:id="'phone' + ${pet.id}" name="phone">
+                                                                                            <option th:each="proc : ${procedures}"
+                                                                                                    th:value="${proc.name}"
+                                                                                                    th:text="${proc.name}"
+                                                                                                    th:id="'option' + ${proc.id}"></option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button form="addPetProcedure" type="button"
+                                                                                class="btn btn-default pull-left"
+                                                                                data-dismiss="modal"
+                                                                                th:onclick="'omgtest(\'' + ${pet.id} + '\');'">
+                                                                            Сохранить
+                                                                        </button>
+                                                                        <button type="button" class="btn btn-default"
+                                                                                data-dismiss="modal">Закрыть
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div th:replace="footer :: footer"></div>
+</body>
+</html>

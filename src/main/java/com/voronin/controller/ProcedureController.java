@@ -5,8 +5,10 @@ import com.voronin.services.ProcedureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 /**
  * TODO: comment.
@@ -20,22 +22,23 @@ public class ProcedureController {
     @Autowired
     private ProcedureService procedureService;
 
-    @RequestMapping("/procedures")
+    @RequestMapping("/procedure")
     public ModelAndView getView() {
         final ModelAndView view = new ModelAndView("procedures");
         view.addObject("procedures", this.procedureService.findAll());
         return view;
     }
 
-    @RequestMapping("/add-procedure")
-    public ModelAndView getProcedurePage() {
-        final ModelAndView view = new ModelAndView("add-procedure");
-        return view;
-    }
-
-    @RequestMapping(value = "/create-procedure", method = RequestMethod.POST)
+    @RequestMapping(value = "/create-procedure")
     public String saveProcedure(final Procedure procedure) {
         this.procedureService.save(this.procedureService.prepareProcedureToSave(procedure));
         return "redirect:/procedures";
+    }
+
+    @RequestMapping("/procedures")
+    @ResponseBody
+    public List<Procedure> getAll() {
+        List<Procedure> procedures = this.procedureService.findAll();
+        return procedures;
     }
 }

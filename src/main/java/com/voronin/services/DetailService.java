@@ -27,7 +27,7 @@ public class DetailService implements UserDetailsService {
     private UserService ownerService;
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(final String email) throws UsernameNotFoundException {
         User user = this.ownerService.getByEmail(email);
         if (user != null) {

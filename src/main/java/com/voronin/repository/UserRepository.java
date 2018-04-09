@@ -11,6 +11,6 @@ import org.springframework.stereotype.Repository;
  * @since 11.02.2018.
  */
 @Repository
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface UserRepository extends CrudRepository<User, Integer> {
     User getByEmail(final String name);
 }

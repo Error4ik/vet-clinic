@@ -37,10 +37,10 @@ public class PetController {
     @Autowired
     private BreedService breedService;
 
-    @RequestMapping("/all")
+    @RequestMapping("/pets")
     public ModelAndView petPage() {
         final ModelAndView view = new ModelAndView("pet-info");
-        view.addObject("pets", userService.getOwners());
+        view.addObject("pets", userService.getUsers());
         return view;
     }
 

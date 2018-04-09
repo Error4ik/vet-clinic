@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <script type="text/javascript" th:src="@{/js/myScript.js}"></script>
+    <title>BLOG</title>
+</head>
+<body>
+<div th:replace="header :: header"></div>
+<div class="container">
+    <div class="col-md-12">
+        <div class="col-md-8">
+            <img th:src="@{/img/photo-tmp.png}" style="display: block; width: 100%; margin: 0 auto"/>
+        </div>
+        <div class="col-md-4 row-centered">
+            <div class="sideboard">
+                <img th:src="@{/img/doska.png}"/>
+                <span>Популярные Статьи</span>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <h2 th:text="${blog.title}"></h2>
+        </div>
+        <div class="col-md-8">
+            <div th:utext="${blog.content}">
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="footer :: footer"></div>
+</body>
+</html>

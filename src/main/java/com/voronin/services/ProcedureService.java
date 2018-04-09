@@ -40,4 +40,8 @@ public class ProcedureService {
         procedure.setDate(new Timestamp(System.currentTimeMillis()));
         return procedure;
     }
+
+    public Procedure getProcedureByName(final String name) {
+        return this.procedureRepository.findByName(name);
+    }
 }

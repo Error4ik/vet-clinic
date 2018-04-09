@@ -7,6 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <script type="text/javascript" th:src="@{/js/myScript.js}"></script>
     <title>Sign In</title>
 </head>
 <body>
@@ -33,7 +34,8 @@
                     <input type="password" class="form-control" id="password" placeholder="Enter password"
                            name="password" required="required">
                 </div>
-                <button type="submit" class="btn btn-success" style="margin-top: 15px; margin-bottom: 15px">Sign In
+                <button type="submit" class="form-control btn btn-success" style="margin-top: 15px; margin-bottom: 15px"
+                        th:text="Войти">
                 </button>
             </form>
         </div>
